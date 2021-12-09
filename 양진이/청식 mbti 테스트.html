@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>청춘의 식사 디저트 MBTI</title>
+    <script src="https://kit.fontawesome.com/c4819c3a60.js" crossorigin="anonymous"></script>
+    <style>
+        @font-face {
+            font-family: 'OTWelcomeRA';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'OTWelcomeBA';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeBA.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'BMJUA';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        a{
+            color: #000;
+            text-decoration: none;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #fdefef;
+            position: relative;
+        }
+        ul{
+            list-style-type: none;
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            max-width: 420px;
+            overflow: hidden;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+        ul.a{
+            height: auto;
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+            display: none;
+        }
+        ul.a>li{
+            transform: translateX(-50%);
+            top: 40px;
+            
+        }
+        ul.n{
+            display: none;
+        }
+        ul>li{
+            position: absolute;
+            width: 68vw;
+            max-width: 360px;
+            left: calc(50% + 400px);
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 60px 20px;
+            border-radius: 30px;
+            border: 1px solid #ef6565;
+            background-color: #fff;
+            opacity: 0;
+            transition: 1s;
+        }
+        li.now{
+            left: 50%;
+            opacity: 1;
+        }
+        li.hidden{
+            left: -400px;
+            opacity: 0;
+        }
+        li h2{
+            font-family: 'OTWelcomeRA';
+            font-size: 16px;
+            text-align: center;
+            color: #ef6565;
+        }
+        li h1, li h3{
+            font-family: 'OTWelcomeBA';
+            font-size: 31px;
+            text-align: center;
+            margin-top: 20px;
+            letter-spacing: -0.05em;
+            line-height: 44px;
+        }
+        h4{
+            font-family: 'OTWelcomeRA';
+            font-size: 24px;
+            text-align: center;
+            letter-spacing: 0.1em;
+        }
+        h5{
+            text-align: center;
+            margin-top: 20px;
+            font-family: "BMJUA";
+            color: #ef6565;
+            font-weight: 500;
+            font-size: 18px;
+            line-height:24px;
+        }
+        p.txt{
+            font-family: 'OTWelcomeRA';
+            text-align: center;
+            font-size: 16px;
+            margin-top: 12px;
+            line-height: 22px;
+        }
+        p.txt:first-of-type{
+            margin-top: 40px;
+        }
+        h5.mt{
+            margin-top: 60px;
+        }
+        ol{
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+        ol>li{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            font-family: 'OTWelcomeRA';
+            font-size: 16px;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-left: 20%;
+        }
+        ol>li a{
+            display: flex;
+            line-height: 28px;
+        }
+        ol>li img{
+            height: 26px;
+            margin-right: 10px;
+        }
+        i{
+            font-size: 26px;
+            margin-right: 10px;
+        }
+        span{
+            margin-top: 4px;
+        }
+        li button{
+            background-color: #ef6565;
+            color: #fff;
+            outline: none;
+            border: none;
+            border-radius: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+            font-family: 'BMJUA';
+            font-size: 16px;
+        }
+        li button.start{
+            margin-top: 50px;
+        }
+        button.A{
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .progress{
+            position: absolute;
+            top: 4vh;
+            box-sizing: border-box;
+            width: 80vw;
+            height: 20px;
+            border-radius: 10px;
+            background-color:#fff;
+            border: 1px solid #ef6565;
+            position: relative;
+            overflow: hidden;
+            max-width: 360px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .bar{
+            height: 20px;
+            width: 0;
+            transition: 1s;
+            background-color: #ef6565;
+            border-radius: 10px;
+            position: absolute;
+            left: 0;
+            top: -1px;
+
+        }
+        .progressNum{
+           position: absolute;
+           top: calc(4vh + 30px);
+           left: 50%;
+           transform: translateX(-50%);
+           width: 80vw;
+           text-align: right;
+           max-width: 360px;
+           font-family: 'OTWelcomeRA';
+        }
+        button.C{
+            margin-top: 50px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            
+            var prog = 1;
+            var index;
+            var e = 0, s = 0, t = 0, j = 0;
+            var mbti = "";
+            $(".q button").on("click",function(){
+                index = $(this).parent("li").index();
+                if($(this).hasClass("e")){
+                    e++;
+                } else if($(this).hasClass("s")){
+                    s++;
+                } else if($(this).hasClass("t")){
+                    t++;
+                } else if($(this).hasClass("j")){
+                    j++;
+                }
+                if(prog<=12){
+                    $(".q li").removeClass("now");
+                    $("li").eq(index).addClass("hidden");
+                    $("li").eq(index+1).addClass("now");
+                    $(".bar").attr('style','width: calc(100/12*'+prog+'%)');
+                    $(".progressNum").children("span").text(prog);
+                    prog++;
+                } else {
+                    $(".q").fadeOut(1000);                    
+                    $(".progress").fadeOut(1000);
+                    $(".progressNum").fadeOut(1000);
+                    $(".n").fadeIn(1000);
+                }
+                console.log(e, s, t, j);
+            });
+            $(".n button").on("click",function(){
+                (e>=2)?mbti+="e":mbti+="i";
+                (s>=2)?mbti+="s":mbti+="n";
+                (t>=2)?mbti+="t":mbti+="f";
+                (j>=2)?mbti+="j":mbti+="p";
+                console.log(mbti);
+                $(".n").fadeOut(1000);
+                $(".a").fadeIn(1000);
+                $("."+mbti).addClass("now");
+                var height = $("."+mbti).outerHeight();
+                $(".a").height(height + 80);
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div class="progress">
+        <div class="bar"></div>
+    </div>
+    <p class="progressNum"><span>0</span> / 12</p>
+    <ul class="q">
+        <li class="now">
+            <h2>청식 MBTI 테스트</h2>
+            <h1>당신과 잘 어울리는 <br>디저트는?</h1>
+            <button class="start">테스트 시작하기</button>
+        </li>
+        <li>
+            <h2>Q1.</h2>
+            <h3>기대하던 맛집을 <br>가기로 했는데<br>약속이 취소되면 나는</h3>
+                <button class="A e">다른 친구를 불러 일단 나간다.</button>
+                <button class="B">아쉽지만 집에 있게 되어 내심 좋다.</button>
+        </li>
+        <li>
+            <h2>Q2.</h2>
+            <h3>공부하고 <br>싶어지는 공간은?</h3>
+                <button class="A e">친구와 자유롭게 대화 가능한 곳</button>
+                <button class="B">모두다 쉿! 조용한 곳</button>
+        </li>
+        <li>
+            <h2>Q3.</h2>
+            <h3>친구들과 만나고 와서<br>가끔 이런 후회를 한다</h3>
+                <button class="A e">내가 괜히 그 얘기를 해가지고... <br>입이 방정이지</button>
+                <button class="B">그 말은 할 걸... 왜 말 못했지...</button>
+        </li>
+        <li>
+            <h2>Q4.</h2>
+            <h3>'사과'하면 <br>떠오르는 것은?</h3>
+                <button class="A s">빨갛다, 둥글다, 맛있다</button>
+                <button class="B">마녀가 백설공주에게 준 사과,<br>나라면 그 사과를 먹었을까</button>
+        </li>
+        <li>
+            <h2>Q5.</h2>
+            <h3>여친/남친을 위해 <br>요리하려고 한다. <br>당신의 요리방법은?</h3>
+                <button class="A s">당연히 정량 계량해서 레시피대로!</button>
+                <button class="B">요리는 감이지~!!</button>
+        </li>
+        <li>
+            <h2>Q6.</h2>
+            <h3>드디어 내일, <br>베프와 여행 가는 날!! <br>당신이 오늘 자기 전에 <br>하는 생각은?</h3>
+                <button class="A s">숙소 예약 등 확인할 거 다 하고 잠</button>
+                <button class="B">여행에서 있을 일부터 <br>별의별 시뮬레이션 돌리다가 잠</button>
+        </li>
+        <li>
+            <h2>Q7.</h2>
+            <h3>나를 위해<br>생일케이크를<br>만들어준 친구,<br>그런데 케이크가 짜다?</h3>
+                <button class="A t">고마워, 그런데 조금 짠 것 같아</button>
+                <button class="B">짜서 당황스럽지만 나를 위해<br>만든 친구에게 말하지 않는다</button>
+        </li>
+        <li>
+            <h2>Q8.</h2>
+            <h3>친구랑 전화하는데, <br>친구가 우울해서 <br>치킨 시켰다고 한다. <br>당신의 반응은?</h3>
+                <button class="A t">무슨 치킨 시켰는데?</button>
+                <button class="B">왜 그래ㅠㅠ 무슨 일 있어???</button>
+        </li>
+        <li>
+            <h2>Q9.</h2>
+            <h3>다음 중 더 <br>마음에 드는 칭찬은?</h3>
+                <button class="A t">너 진짜 잘했다!!</button>
+                <button class="B">너 진짜 열심히 했구나?!</button>
+        </li>
+        <li>
+            <h2>Q10.</h2>
+            <h3>오늘 뭐먹지? <br>하는 친구의 <br>말에 당신은</h3>
+                <button class="A j">검색해온 맛집 리스트를 꺼낸다</button>
+                <button class="B">야 저기 맛있겠다 저기 갈까?</button>
+        </li>
+        <li>
+            <h2>Q11.</h2>
+            <h3>당신이 더 가고 싶은 <br>회사는?</h3>
+                <button class="A j">일하는 곳이니까 체계적인 회사!</button>
+                <button class="B">자유로운 분위기의 회사!</button>
+        </li>
+        <li>
+            <h2>Q12.</h2>
+            <h3>요리하려는데 <br>재료가 떨어졌다. <br>이 때 당신은</h3>
+                <button class="A">가서 고르면 되겠지</button>
+                <button class="B j">어디 브랜드가 제일 괜찮지?<br>찾아보고 간다</button>
+        </li>
+    </ul>
+    <ul class="n">
+        <li class="now">
+            <h2>청식 MBTI 테스트</h2>
+            <h3>모든 답변 완료!</h3>
+            <button class="C">당신의 디저트는?</button>
+        </li>
+    </ul>
+    <ul class="a">
+        <li class="infp">
+            <h2>청식 MBTI 테스트</h2>
+            <img src="./mbti.jpg" alt=""> <!--mbti 일러스트는 여기 넣어주세요(정사각형 비율로 그림에 딱 맞게 잘라야 함)-->
+            <h3>INFP</h3>
+            <h4>온화한 마시멜로우</h4>
+            <h5>당신과 잘 어울리는 키워드<br>
+            "온화한" "사색하는" "헌신적인"</h5>
+            <p class="txt">
+                - 마음이 따뜻하고 차분하며, 자신이 맡은 업무에 대단히 책임감을 가지고 있음
+            </p>
+            <p class="txt">- 생각이 많고 고민도 정말 많이 해서 시간이 지나면 내적 신념이 생김</p>
+            <p class="txt">- 남들에게 도움이 되는 것을 좋아함</p>
+            <p class="txt">- 자존감은 낮은 편이나 자의식은 강한 편</p>
+            <p class="txt">- 경청하는 능력이 있고, 공감을 잘함</p>
+            <p class="txt">- 언어관련 능력이 뛰어나서 엉뚱하고 재미있는 표현을 잘함</p>
+            <p class="txt">- 싸우는 거 싫어해서 그냥 자기가 희생함</p>
+            <h5 class="mt">검사결과가 만족스럽다면?</h5>
+            <ol>
+                <li><a href="https://www.instagram.com/taste_you.th"><i class="fab fa-instagram"></i>청식 인스타그램</a></li>
+                <li><a href="https://blog.naver.com/cheongsik20"><img src="./blog.png" alt="">청식 블로그</a></li>
+            </ol>
+        </li>
+        <li class="infj">
+            <h2>청식 MBTI 테스트</h2>
+            <img src="./mbti.jpg" alt=""> <!--mbti 일러스트는 여기 넣어주세요(정사각형 비율로 그림에 딱 맞게 잘라야 함)-->
+            <h3>INFJ</h3>
+            <h4>반전매력 크렘브륄레</h4>
+            <h5>당신과 잘 어울리는 키워드<br>
+            "신비로운" "통찰력" "따뜻한"</h5>
+            <p class="txt">
+                - 새로운 일 시작하거나 새로운 사람 만나는 걸 난감해 함
+            </p>
+            <p class="txt">
+                - 자신의 감정을 잘 드러내지 않음
+            </p>
+            <p class="txt">
+                - 어디서 주워들어서 말하는 건 절대 못 믿음
+            </p>
+            <p class="txt">
+                - 공감능력이 좋아서 타인의 감정을 잘 읽음
+            </p>
+            <p class="txt">
+                - 옳다고 확신이 생긴 신념은 끝까지 밀고 감
+            </p>
+            <p class="txt">
+                - 호기심이 많고 항상 의문을 달고 사는 편
+            </p>
+            <p class="txt">
+                - 영감력이 뛰어나 사차원이라는 소리를 종종 듣는 편
+            </p>
+            <h5 class="mt">검사결과가 만족스럽다면?</h5>
+            <ol>
+                <li><a href="https://www.instagram.com/taste_you.th"><i class="fab fa-instagram"></i>청식 인스타그램</a></li>
+                <li><a href="https://blog.naver.com/cheongsik20"><img src="./blog.png" alt="">청식 블로그</a></li>
+            </ol>
+        </li>
+        <li class="intp">
+            <h2>청식 MBTI 테스트</h2>
+            <img src="./mbti.jpg" alt=""> <!--mbti 일러스트는 여기 넣어주세요(정사각형 비율로 그림에 딱 맞게 잘라야 함)-->
+            <h3>INTP</h3>
+            <h4>마이웨이 진저브레드</h4>
+            <h5>당신과 잘 어울리는 키워드<br>
+            "진지한" "지적인" "독립적"</h5>
+            <p class="txt">
+                - 변덕이 심하며 결정을 다소 어려워함
+            </p>
+            <p class="txt">
+                - 타인에게 관심이 없으며 개인주의 성향이 강함
+            </p>
+            <p class="txt">
+                - 지적 관심은 많지만 실행력은 부족한 편
+            </p>
+            <p class="txt">
+                - 매우 분석적이고 논리적이며 객관적 비평을 잘함
+            </p>
+            <p class="txt">
+                - 상대방을 속이려는 거짓말, 빈말, 뒷담을 잘하지 않는 편
+            </p>
+            <p class="txt">
+                - 공감능력이 다소 부족해 감정적인 하소연을 들어주는 건 잘 못해서 영혼없는 리액션 남발
+            </p>
+            <p class="txt">
+                - 지식에 대한 욕망이 강하여 지적인 면이 매우 뚜렷하게 드러남
+            </p>
+            <h5 class="mt">검사결과가 만족스럽다면?</h5>
+            <ol>
+                <li><a href="https://www.instagram.com/taste_you.th"><i class="fab fa-instagram"></i>청식 인스타그램</a></li>
+                <li><a href="https://blog.naver.com/cheongsik20"><img src="./blog.png" alt="">청식 블로그</a></li>
+            </ol>
+        </li>
+        <li class="intj">
+            <h2>청식 MBTI 테스트</h2>
+            <img src="./mbti.jpg" alt=""> <!--mbti 일러스트는 여기 넣어주세요(정사각형 비율로 그림에 딱 맞게 잘라야 함)-->
+            <h3>INTJ</h3>
+            <h4>이성적인 바게트</h4>
+            <h5>당신과 잘 어울리는 키워드<br>
+            "비범한" "독립적" "이성적"</h5>
+            <p class="txt">
+                - 호기심이 많아서 다양한 관점으로 관찰하고 분석함
+            </p>
+            <p class="txt">
+                - 자신의 목표를 실현하려는 굳은 의지가 있어 목적 달성을 위해 열심히 함
+            </p>
+            <p class="txt">
+                - 고집이 센 편이라 자신이 한번 맞다고 생각하면 그대로 밀어붙이는 불도저 같은 모습도 있음
+            </p>
+            <p class="txt">
+                - 타인의 감정에 무딘편이라 차갑고 인정머리 없다는 평가를 받기도 함
+            </p>
+            <p class="txt">
+                - 이성적이고 증명과 논증을 좋아하며, 납득이 가는 비판은 수용하고 변화하려고 노력함
+            </p>
+            <p class="txt">
+                - 자기통제력이 우수한 편
+            </p>
+            <p class="txt">
+                - 사람들 간에 무언으로 약속된 합의를 깨는데 스스럼이 없으며 합당하다고 생각하고 실행함
+            </p>
+            <h5 class="mt">검사결과가 만족스럽다면?</h5>
+            <ol>
+                <li><a href="https://www.instagram.com/taste_you.th"><i class="fab fa-instagram"></i>청식 인스타그램</a></li>
+                <li><a href="https://blog.naver.com/cheongsik20"><img src="./blog.png" alt="">청식 블로그</a></li>
+            </ol>
+        </li>
+        <li class="isfp">
+            <h2>청식 MBTI 테스트</h2>
+            <img src="./mbti.jpg" alt=""> <!--mbti 일러스트는 여기 넣어주세요(정사각형 비율로 그림에 딱 맞게 잘라야 함)-->
+            <h3>ISFP</h3>
+            <h4>조용한 관종 <br>레인보우케이크</h4>
+            <h5>당신과 잘 어울리는 키워드<br>
+            "비범한" "독립적" "이성적"</h5>
+            <p class="txt">
+                - 호기심이 많아서 다양한 관점으로 관찰하고 분석함
+            </p>
+            <p class="txt">
+                - 자신의 목표를 실현하려는 굳은 의지가 있어 목적 달성을 위해 열심히 함
+            </p>
+            <p class="txt">
+                - 고집이 센 편이라 자신이 한번 맞다고 생각하면 그대로 밀어붙이는 불도저 같은 모습도 있음
+            </p>
+            <p class="txt">
+                - 타인의 감정에 무딘편이라 차갑고 인정머리 없다는 평가를 받기도 함
+            </p>
+            <p class="txt">
+                - 이성적이고 증명과 논증을 좋아하며, 납득이 가는 비판은 수용하고 변화하려고 노력함
+            </p>
+            <p class="txt">
+                - 자기통제력이 우수한 편
+            </p>
+            <p class="txt">
+                - 사람들 간에 무언으로 약속된 합의를 깨는데 스스럼이 없으며 합당하다고 생각하고 실행함
+            </p>
+            <h5 class="mt">검사결과가 만족스럽다면?</h5>
+            <ol>
+                <li><a href="https://www.instagram.com/taste_you.th"><i class="fab fa-instagram"></i>청식 인스타그램</a></li>
+                <li><a href="https://blog.naver.com/cheongsik20"><img src="./blog.png" alt="">청식 블로그</a></li>
+            </ol>
+        </li>
+        <li class="isfj">
+            <h2>청식 MBTI 테스트</h2>
+            <img src="./mbti.jpg" alt=""> <!--mbti 일러스트는 여기 넣어주세요(정사각형 비율로 그림에 딱 맞게 잘라야 함)-->
+            <h3>ISFJ</h3>
+            <h4>외유내강 호두과자</h4>
+            <h5>당신과 잘 어울리는 키워드<br>
+            "이타심" "책임감" "체계적"</h5>
+            <p class="txt">
+                - 끈기 있고 성실하며, 안정감이 있음
+            </p>
+            <p class="txt">
+                - 자기 의견을 끝까지 주장하지 못하고 다수 의견에 따르는 편
+            </p>
+            <p class="txt">
+                - 다른 사람의 말에 귀 기울이고 타인에게 상처주지 않기 위해 최대한 배려함
+            </p>
+            <p class="txt">
+                - 책임감이 강하고 마음이 따뜻해 매우 가정적이고 헌신적임
+            </p>
+            <p class="txt">
+                - 흥분하는 모습을 거의 보이지 않음
+            </p>
+            <p class="txt">
+                - 계획적이고 반복적인 일을 하며 만족감을 얻음
+            </p>
+            <p class="txt">
+                - 겉으로 보기에는 부드러워 보이지만, 마음 속은 대단히 강한 편
+            </p>
+            <h5 class="mt">검사결과가 만족스럽다면?</h5>
+            <ol>
+                <li><a href="https://www.instagram.com/taste_you.th"><i class="fab fa-instagram"></i>청식 인스타그램</a></li>
+                <li><a href="https://blog.naver.com/cheongsik20"><img src="./blog.png" alt="">청식 블로그</a></li>
+            </ol>
+        </li>
+        <li class="istp">
+            <h2>청식 MBTI 테스트</h2>
+            <img src="./mbti.jpg" alt=""> <!--mbti 일러스트는 여기 넣어주세요(정사각형 비율로 그림에 딱 맞게 잘라야 함)-->
+            <h3>ISTP</h3>
+            <h4>개인주의 모카번</h4>
+            <h5>당신과 잘 어울리는 키워드<br>
+            "냉철한" "관찰력" "개인주의"</h5>
+            <p class="txt">
+                - 자기와 관련된 거 아니면, 주변 일과 사람에 무관심함
+            </p>
+            <p class="txt">
+                - 냉철한 판단을 잘하는 편
+            </p>
+            <p class="txt">
+                - 타인과 보내는 시간보다는 혼자 있는 시간을 과하게 좋아함
+            </p>
+            <p class="txt">
+                - 한번 해야겠다고 생각하면 바로 추진하는 스타일
+            </p>
+            <p class="txt">
+                - 독립적인 성향이 강하고 간섭받는 것을 싫어함
+            </p>
+            <p class="txt">
+                - 분석을 잘하고 관찰력이 뛰어남
+            </p>
+            <p class="txt">
+                - 마음에 없는 소리를 잘 못해서 영혼 없다는 소리를 자주 들음
+            </p>
+            <h5 class="mt">검사결과가 만족스럽다면?</h5>
+            <ol>
+                <li><a href="https://www.instagram.com/taste_you.th"><i class="fab fa-instagram"></i>청식 인스타그램</a></li>
+                <li><a href="https://blog.naver.com/cheongsik20"><img src="./blog.png" alt="">청식 블로그</a></li>
+            </ol>
+        </li>
+        <li class="istj">
+            <h2>청식 MBTI 테스트</h2>
+            <img src="./mbti.jpg" alt=""> <!--mbti 일러스트는 여기 넣어주세요(정사각형 비율로 그림에 딱 맞게 잘라야 함)-->
+            <h3>ISTJ</h3>
+            <h4>청렴결백 소금빵</h4>
+            <h5>당신과 잘 어울리는 키워드<br>
+            "신뢰할 수 있는" "신중한" "우직한"</h5>
+            <p class="txt">
+                - 자기와 관련된 거 아니면, 주변 일과 사람에 무관심함
+            </p>
+            <p class="txt">
+                - 매 순간 마주치는 위기 속에서도 침착하게 인내심으로 극복함
+            </p>
+            <p class="txt">
+                - 한 번 내뱉은 말은 기필코 지키려고 함
+            </p>
+            <p class="txt">
+                - 예고 없는 갑작스러운 변화를 매우 싫어함
+            </p>
+            <p class="txt">
+                - 감정이나 육감보다는 사실과 논리에 근거할 것을 믿고, 결정을 내릴 때에는 주변 사람들의 감정이나 자신의 개인적인 가치관보다는 논리와 이성에 따름
+            </p>
+            <p class="txt">
+                - 모든 일을 할 때에는 항상 체계적인 계획을 세움
+            </p>
+            <p class="txt">
+                - 세상의 비평에 절대로 기죽지 않기 때문에 때론 냉혈인간처럼 보이기도 함
+            </p>
+            <h5 class="mt">검사결과가 만족스럽다면?</h5>
+            <ol>
+                <li><a href="https://www.instagram.com/taste_you.th"><i class="fab fa-instagram"></i>청식 인스타그램</a></li>
+                <li><a href="https://blog.naver.com/cheongsik20"><img src="./blog.png" alt="">청식 블로그</a></li>
+            </ol>
+        </li>
+        <li class="enfp">
+            <h2>청식 MBTI 테스트</h2>
+            <img src="./mbti.jpg" alt=""> <!--mbti 일러스트는 여기 넣어주세요(정사각형 비율로 그림에 딱 맞게 잘라야 함)-->
+            <h3>ENFP</h3>
+            <h4>자유로운 솜사탕</h4>
+            <h5>당신과 잘 어울리는 키워드<br>
+            "자유로운" "낙천적" "다재다능"</h5>
+            <p class="txt">
+                - 생활양식이 개방적이며 자유로움
+            </p>
+            <p class="txt">
+                - 흥미있고 관심있으면 완전 열정적
+            </p>
+            <p class="txt">
+                - 낯을 가리는데 풀리면 금방 친해지고 말도 많아지는 성격
+            </p>
+            <p class="txt">
+                - 외향적이라 친구들이랑 노는게 좋지만 혼자 있고 싶을 땐 철저하게 혼자 있음
+            </p>
+            <p class="txt">
+                - 거짓말 잘 못해서 입에 발린 말 잘 못함
+            </p>
+            <p class="txt">
+                - 감정기복 심함, 감정 얼굴에 다 드러나는 편
+            </p>
+            <p class="txt">
+                - 정신산만하고 생각이 많음
+            </p>
+            <h5 class="mt">검사결과가 만족스럽다면?</h5>
+            <ol>
+                <li><a href="https://www.instagram.com/taste_you.th"><i class="fab fa-instagram"></i>청식 인스타그램</a></li>
+                <li><a href="https://blog.naver.com/cheongsik20"><img src="./blog.png" alt="">청식 블로그</a></li>
+            </ol>
+        </li>
+        <li class="enfj">
+            <h2>청식 MBTI 테스트</h2>
+            <img src="./mbti.jpg" alt=""> <!--mbti 일러스트는 여기 넣어주세요(정사각형 비율로 그림에 딱 맞게 잘라야 함)-->
+            <h3>ENFJ</h3>
+            <h4>인간 댕댕이<br>커스터드 푸딩</h4>
+            <h5>당신과 잘 어울리는 키워드<br>
+            "섬세한" "친화적인" "센스 있는"</h5>
+            <p class="txt">
+                - 핵인싸 되고 싶어함
+            </p>
+            <p class="txt">
+                - 센스 있고 눈치가 빠른 편
+            </p>
+            <p class="txt">
+                - 사람을 좋아하고 정이 많음
+            </p>
+            <p class="txt">
+                - 갈등상황 너무 싫어하고 비판적인 사람 경계함
+            </p>
+            <p class="txt">
+                - 리액션, 센스, 눈치 다 좋고 나보다 상대를 먼저 생각해서 행동하고 말함
+            </p>
+            <p class="txt">
+                - 일의 결과보다도 사람과의 교감 더 중시
+            </p>
+            <p class="txt">
+                - 사전 계획을 세운 뒤 일을 행하는 편
+            </p>
+            <h5 class="mt">검사결과가 만족스럽다면?</h5>
+            <ol>
+                <li><a href="https://www.instagram.com/taste_you.th"><i class="fab fa-instagram"></i>청식 인스타그램</a></li>
+                <li><a href="https://blog.naver.com/cheongsik20"><img src="./blog.png" alt="">청식 블로그</a></li>
+            </ol>
+        </li>
+        <li class="entp">
+            <h2>청식 MBTI 테스트</h2>
+            <img src="./mbti.jpg" alt=""> <!--mbti 일러스트는 여기 넣어주세요(정사각형 비율로 그림에 딱 맞게 잘라야 함)-->
+            <h3>ENTP</h3>
+            <h4>매운맛 프레첼</h4>
+            <h5>당신과 잘 어울리는 키워드<br>
+            "뜨거운" "독립적" "자기애 강한"</h5>
+            <p class="txt">
+                - 솔직하고 직설적임
+            </p>
+            <p class="txt">
+                - 자기주장이 강한 것에 비해 정당한 비판에 대한 수용이 빠름
+            </p>
+            <p class="txt">
+                - 나한테 잘해주는 사람은 두배로 잘해주지만, 반대의 경우도 두배로
+            </p>
+            <p class="txt">
+                - 선입견이 없는 편, 있는 그대로를 받아들임
+            </p>
+            <p class="txt">
+                - 말보다 행동이 앞섬
+            </p>
+            <p class="txt">
+                - 새로운 아이디어나 창의적인 발상을 잘 냄
+            </p>
+            <p class="txt">
+                - 두뇌회전이 빠른 편이고 대략적인 이해가 뛰어남
+            </p>
+            <h5 class="mt">검사결과가 만족스럽다면?</h5>
+            <ol>
+                <li><a href="https://www.instagram.com/taste_you.th"><i class="fab fa-instagram"></i>청식 인스타그램</a></li>
+                <li><a href="https://blog.naver.com/cheongsik20"><img src="./blog.png" alt="">청식 블로그</a></li>
+            </ol>
+        </li>
+        <li class="entj">
+            <h2>청식 MBTI 테스트</h2>
+            <img src="./mbti.jpg" alt=""> <!--mbti 일러스트는 여기 넣어주세요(정사각형 비율로 그림에 딱 맞게 잘라야 함)-->
+            <h3>ENTJ</h3>
+            <h4>야망있는 까눌레</h4>
+            <h5>당신과 잘 어울리는 키워드<br>
+            "책임감" "성공" "리더"</h5>
+            <p class="txt">
+                - 불도저 같은 성격이지만, 내면에 따뜻한 구석도 있음
+            </p>
+            <p class="txt">
+                - 복잡하게 얽힌 문제까지도 자극이 되어 쉽게 파악하며, 자신감이 넘쳐 거만해 보이기도 함
+            </p>
+            <p class="txt">
+                - 사람보다 일을 중시하는 편
+            </p>
+            <p class="txt">
+                - 뛰어난 사회성으로 동료들을 채찍질하며 함께 더 큰 성공과 성취를 이루고자 함
+            </p>
+            <p class="txt">
+                - 답답한 건 절대 못 봄
+            </p>
+            <p class="txt">
+                - 우위를 선점하고 싶어하며 아랫 사람이 되기 싫어함
+            </p>
+            <p class="txt">
+                - 미래에 대한 꿈이 큼
+            </p>
+            <h5 class="mt">검사결과가 만족스럽다면?</h5>
+            <ol>
+                <li><a href="https://www.instagram.com/taste_you.th"><i class="fab fa-instagram"></i>청식 인스타그램</a></li>
+                <li><a href="https://blog.naver.com/cheongsik20"><img src="./blog.png" alt="">청식 블로그</a></li>
+            </ol>
+        </li>
+        <li class="esfp">
+            <h2>청식 MBTI 테스트</h2>
+            <img src="./mbti.jpg" alt=""> <!--mbti 일러스트는 여기 넣어주세요(정사각형 비율로 그림에 딱 맞게 잘라야 함)-->
+            <h3>ESFP</h3>
+            <h4>즐거운 젤리빈</h4>
+            <h5>당신과 잘 어울리는 키워드<br>
+            "즐거운" "사교적" "독창적"</h5>
+            <p class="txt">
+                - 매사에 신나고 재밌음
+            </p>
+            <p class="txt">
+                - 센스와 더불어 유머감각도 좋아 학교 다닐 때 인기 많은 편에 속하는 부류
+            </p>
+            <p class="txt">
+                - 기분파에 충동적이라 돈이 있으면 일단 쓰고 봄
+            </p>
+            <p class="txt">
+                - 귀가 얇아 변덕이 심한 편
+            </p>
+            <p class="txt">
+                - 직설적이지만, 은근 거절 못함
+            </p>
+            <p class="txt">
+                - 문제를 해결할 때 자신의 직감을 믿고 능력을 신뢰하며 해결책을 스스로 찾으려고 노력함
+            </p>
+            <p class="txt">
+                - 자존감이 높아 자신을 비판하거나 평가할 때 날이 섬
+            </p>
+            <h5 class="mt">검사결과가 만족스럽다면?</h5>
+            <ol>
+                <li><a href="https://www.instagram.com/taste_you.th"><i class="fab fa-instagram"></i>청식 인스타그램</a></li>
+                <li><a href="https://blog.naver.com/cheongsik20"><img src="./blog.png" alt="">청식 블로그</a></li>
+            </ol>
+        </li>
+        <li class="esfj">
+            <h2>청식 MBTI 테스트</h2>
+            <img src="./mbti.jpg" alt=""> <!--mbti 일러스트는 여기 넣어주세요(정사각형 비율로 그림에 딱 맞게 잘라야 함)-->
+            <h3>ESFJ</h3>
+            <h4>완벽주의 달고나</h4>
+            <h5>당신과 잘 어울리는 키워드<br>
+            "열정" "도전적" "사교적"</h5>
+            <p class="txt">
+                - 혼자 계획 세우는 거 좋아하고 틀어지는 거 싫어함
+            </p>
+            <p class="txt">
+                - 말을 잘하고 사람들을 압도하는 카리스마를 가지고 있음
+            </p>
+            <p class="txt">
+                - 타인을 배려하는 편이라 혹여나 듣기 싫어할 만한 말은 굳이 하지 않음
+            </p>
+            <p class="txt">
+                - 하지만, 가족들한테 잔소리가 많은 편
+            </p>
+            <p class="txt">
+                - 타인에게 인정을 받는 것에 매우 민감함
+            </p>
+            <p class="txt">
+                - 분위기 파악을 잘하고, 남의 비위를 잘 맞춰줌
+            </p>
+            <p class="txt">
+                - 참을성과 끈기가 뛰어남
+            </p>
+            <h5 class="mt">검사결과가 만족스럽다면?</h5>
+            <ol>
+                <li><a href="https://www.instagram.com/taste_you.th"><i class="fab fa-instagram"></i>청식 인스타그램</a></li>
+                <li><a href="https://blog.naver.com/cheongsik20"><img src="./blog.png" alt="">청식 블로그</a></li>
+            </ol>
+        </li>
+        <li class="estp">
+            <h2>청식 MBTI 테스트</h2>
+            <img src="./mbti.jpg" alt=""> <!--mbti 일러스트는 여기 넣어주세요(정사각형 비율로 그림에 딱 맞게 잘라야 함)-->
+            <h3>ESTP</h3>
+            <h4>강강약약 비스킷슈</h4>
+            <h5>당신과 잘 어울리는 키워드<br>
+            "화끈한" "단순명료" "임기응변"</h5>
+            <p class="txt">
+                - 논리적이고, 분석적으로 일을 잘 처리할 수 있지만, 창의적인 아이디어를 내거나 기획적인 업무에는 큰 흥미를 갖지 못함
+            </p>
+            <p class="txt">
+                - 천성적으로 진지하지 못하며 유쾌하고 가벼움
+            </p>
+            <p class="txt">
+                - 자신만의 기준이 있어서 선 넘는 걸 극도로 싫어함
+            </p>
+            <p class="txt">
+                - 간접적으로 돌려 말하는 거 싫어함
+            </p>
+            <p class="txt">
+                - 앉아서 말로만 하는 것보다 직접 몸으로 부딪히는 걸 좋아함
+            </p>
+            <p class="txt">
+                - 대부분의 상황을 즉흥적인 순발력과 임기응변으로 대처하는 편인데 그 임기응변 능력이 매우 뛰어남
+            </p>
+            <p class="txt">
+                - 승부욕 강해서 경쟁, 내기 이런 거 좋아함
+            </p>
+            <h5 class="mt">검사결과가 만족스럽다면?</h5>
+            <ol>
+                <li><a href="https://www.instagram.com/taste_you.th"><i class="fab fa-instagram"></i>청식 인스타그램</a></li>
+                <li><a href="https://blog.naver.com/cheongsik20"><img src="./blog.png" alt="">청식 블로그</a></li>
+            </ol>
+        </li>
+        <li class="estj">
+            <h2>청식 MBTI 테스트</h2>
+            <img src="./mbti.jpg" alt=""> <!--mbti 일러스트는 여기 넣어주세요(정사각형 비율로 그림에 딱 맞게 잘라야 함)-->
+            <h3>ESTJ</h3>
+            <h4>똑부러진 박하사탕</h4>
+            <h5>당신과 잘 어울리는 키워드<br>
+            "진취적" "솔선수범" "똑부러진"</h5>
+            <p class="txt">
+                - 남의 말에 공감하는 척하지만 속으로는 상황을 일일이 판단함
+            </p>
+            <p class="txt">
+                - 여유로우면 불안함
+            </p>
+            <p class="txt">
+                - 평화주의자이긴 하지만, 싸워서 지는 건 싫어함
+            </p>
+            <p class="txt">
+                - 호불호가 완전 확실
+            </p>
+            <p class="txt">
+                - 철저하게 수직계열화 되어있는 집단에 속하여 일하기를 선호함
+            </p>
+            <p class="txt">
+                - 결정을 잘하고, 결정들을 이행하기 위해 빠르게 움직임
+            </p>
+            <p class="txt">
+                - 타인에게 무관심하고 차갑다는 말을 듣는 편
+            </p>
+            <h5 class="mt">검사결과가 만족스럽다면?</h5>
+            <ol>
+                <li><a href="https://www.instagram.com/taste_you.th"><i class="fab fa-instagram"></i>청식 인스타그램</a></li>
+                <li><a href="https://blog.naver.com/cheongsik20"><img src="./blog.png" alt="">청식 블로그</a></li>
+            </ol>
+        </li>
+    </ul>
+</body>
+</html>
